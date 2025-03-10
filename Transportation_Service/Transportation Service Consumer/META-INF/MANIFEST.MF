@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Transportation_Service_Consumer
+Bundle-SymbolicName: Transportation_Service_Consumer
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: transportation_service_consumer.TransportSrviceConsumerActivator
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Automatic-Module-Name: Transportation.Service.Consumer
+Import-Package: org.osgi.framework;version="1.3.0",
+ step_it_up_transportation_service_producer
+Bundle-ActivationPolicy: lazy

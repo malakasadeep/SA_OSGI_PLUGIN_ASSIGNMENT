@@ -1,0 +1,7 @@
+INDEX VERSION 1.134+D:\SLIIT\3rd Year\2 Sem\SE3030 - Software Architecture\Assignment 01\OSGI-Plugin-Project\.metadata\.plugins\org.eclipse.jdt.core
+1072864568.index
+1307797722.index
+2865501729.index
+1865797976.index
+3637371843.index
+3712511646.index

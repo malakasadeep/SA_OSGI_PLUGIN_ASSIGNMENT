@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Step_it_up_Transportation_Service_Producer
+Bundle-SymbolicName: Transportation_Service_Producer
+Bundle-Version: 1.0.0.qualifier
+Export-Package: step_it_up_transportation_service_producer
+Bundle-Activator: step_it_up_transportation_service_producer.TransportationServiceProducerActivator
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Automatic-Module-Name: Step.it.up.Transportation.Service.Producer
+Import-Package: loyaltyprogramproducer,
+ org.osgi.framework;version="1.3.0"
+Bundle-ActivationPolicy: lazy

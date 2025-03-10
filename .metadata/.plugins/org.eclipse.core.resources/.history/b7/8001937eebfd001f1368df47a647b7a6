@@ -1,0 +1,321 @@
+package hotel_booking_consumer;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import org.osgi.framework.BundleActivator;
+import org.osgi.framework.BundleContext;
+import org.osgi.framework.ServiceReference;
+
+import hotel_booking_producer.CustomerProfile;
+import hotel_booking_producer.HotelBillInfo;
+import hotel_booking_producer.HotelBillingService;
+import hotel_booking_producer.HotelProfile;
+
+
+public class Activator implements BundleActivator {
+
+
+	
+	Scanner sobj = new Scanner(System.in);
+
+	
+	
+	ServiceReference reference;
+	
+	
+
+	public void start(BundleContext context) throws Exception {
+		
+		
+		System.out.println("Consumer Started!!!!!!!!!");
+		
+		reference = context.getServiceReference(HotelBillingService.class.getName());
+		HotelBillingService hCService = (HotelBillingService)context.getService(reference);
+		
+		
+		
+		String customerName;
+		String phoneNumber;
+		String hotelName = null;
+		String hotelAddress = null;
+		String hotelTelephone = null;
+		int hotel;
+		int roomType;
+		int numberOfRooms;
+		int numberOfDays;
+		double stdRoomPrice = 0;
+		double deluxeRoomPrice = 0;
+		double luxuryRoomType = 0;
+		double roomPrice = 0;
+		int loyaltyNumber = 0;
+		boolean isRoyalty = false;
+		int isContinue;
+		int selectLoylty = 0;
+		ArrayList<HotelBillInfo> list = new ArrayList<HotelBillInfo>();
+		
+		System.out.println("Hotel Booking Consumer Started!");
+		System.out.println();
+		System.out.println();
+		System.out.println("============================== Welcome to OceanTravel Agency ==============================");
+		System.out.println();
+		System.out.println("                              Make your tour amazing with us                               ");
+		System.out.println();
+		System.out.println("------------------------------ Welcome to Hotel Booking Service ------------------------------");
+		
+		//Input name and mobile number
+		
+		System.out.print("Enter your name : ");
+		customerName = sobj.nextLine();
+		System.out.print("Enter your Mobile Number : ");
+		phoneNumber = sobj.nextLine();
+		System.out.println();
+		
+//		while(true) {
+//			System.out.println("Are you a Loyalty Member: 1.Yes 2.No");
+//			selectLoylty = sobj.nextInt();
+//			if()
+//			
+//		}
+		
+		do {
+			
+			System.out.println("Are you a Loyalty Member: 1.Yes 2.No");
+			
+			selectLoylty = sobj.nextInt();
+			if(selectLoylty == 1) {
+				
+				while(true) {
+					System.out.print("Enter your 6 digit royalty number : ");
+					loyaltyNumber = sobj.nextInt();
+					if(hCService.checkLoyaltyMember(loyaltyNumber)) {
+						System.out.println("Your Royalty Number is Valid!");
+						isRoyalty = true;
+						break;
+					}else {
+						System.out.println("The Royalty number is invalid do you need to try again : 1. Yes    2. No");
+						int need = sobj.nextInt();
+						if(need == 1) {
+							continue;
+						}else {
+							break;
+						}
+					}
+					
+				};
+				
+				break;
+			}else if(selectLoylty == 2) {
+				
+				break;
+			}
+			
+		}while(selectLoylty != 1 || selectLoylty !=2);
+			
+		
+//			
+		CustomerProfile cusObj = new CustomerProfile(customerName,phoneNumber,isRoyalty);
+		
+		//choosing a hotel
+		while(true) {
+			
+			while(true) {
+				
+				System.out.println("");
+				System.out.println("------------------------------------------------------------------------");
+				System.out.println("");
+				System.out.println("If you want to continue with this service or exit:     1.Continue    2.Exit");
+				System.out.println("");
+				System.out.print("Enter your option (Enter the related number): ");
+				isContinue = sobj.nextInt();
+				System.out.println();
+				
+				if(isContinue == 1 || isContinue == 2) {
+					break;
+				}else {
+					System.out.println("!!!!!Invalid Number!!!!! ----- Re enter the correct code ");
+					continue;
+				}
+			}
+			
+				
+			if(isContinue == 1) {
+//				System.out.println("========================================================================");
+//				System.out.println("Choose a Hotel to continue:");
+//				System.out.println("     1. Hill Cottage Hotel");
+//				System.out.println("     2. Shangri-La Hotel");
+//				System.out.println();
+//				System.out.print("Enter the Hotel (Enter the number):");
+//				hotel = sobj.nextInt();
+//				System.out.println();
+				
+				while(true) {
+					
+					System.out.println("========================================================================");
+					System.out.println("Choose a Hotel to continue:");
+					System.out.println("     1. Hill Cottage Hotel");
+					System.out.println("     2. Shangri-La Hotel");
+					System.out.println();
+					System.out.print("Enter the Hotel (Enter the number):");
+					hotel = sobj.nextInt();
+					System.out.println();
+					
+					if(hotel == 1 || hotel == 2) {
+						break;
+					}else {
+						System.out.println("!!!!!Invalid Number!!!!! ----- Re enter the correct code ");
+						continue;
+					}
+				}
+				
+				//Define Hotel name and Price
+				
+				if(hotel == 1) {
+					
+					stdRoomPrice = 10000.00;
+					deluxeRoomPrice = 20000.00;
+					luxuryRoomType= 30000.00;
+					hotelName = "Rathna Pearl Grand";
+					hotelAddress = "09 Edward Ln, Colombo 00003";
+					hotelTelephone = "0112 597 444";
+					
+					
+				}else if(hotel == 2) {
+					
+					stdRoomPrice = 15000.00;
+					deluxeRoomPrice = 25000.00;
+					luxuryRoomType= 40000.00;
+					hotelName = "Mandarina Colombo";
+					hotelAddress = "433 A2, Colombo 00300";
+					hotelTelephone = "0112 550 660";
+				}
+				
+				//Choosing a room type
+					
+					System.out.println("===================== Welcome to "+hotelName+" Hotel =====================");
+					System.out.println();
+					
+					do {
+						
+//						System.out.println("Choose a Room Type : ");
+//						System.out.format("%-18s %8s","Room Type","Unit Price");
+//						System.out.println();
+//						System.out.format("%-18s %8s","1. Standered Room","Rs. "+stdRoomPrice);
+//						System.out.println();
+//						System.out.format("%-18s %8s","2. Deluxe Room","Rs. "+deluxeRoomPrice);
+//						System.out.println();
+//						System.out.format("%-18s %8s","3. Luxury Room","Rs. "+luxuryRoomType);
+//						System.out.println();
+//						System.out.println();
+//						System.out.print("Enter the Room Type (Enter the number):");
+//						roomType = sobj.nextInt();
+//						System.out.println();
+						
+						
+						while(true) {
+							
+							System.out.println("Choose a Room Type : ");
+							System.out.format("%-18s %8s","Room Type","Unit Price");
+							System.out.println();
+							System.out.format("%-18s %8s","1. Standered Room","Rs. "+stdRoomPrice);
+							System.out.println();
+							System.out.format("%-18s %8s","2. Deluxe Room","Rs. "+deluxeRoomPrice);
+							System.out.println();
+							System.out.format("%-18s %8s","3. Luxury Room","Rs. "+luxuryRoomType);
+							System.out.println();
+							System.out.println();
+							System.out.print("Enter the Room Type (Enter the number):");
+							roomType = sobj.nextInt();
+							System.out.println();
+							
+							if(roomType == 1 || roomType == 2 || roomType == 3) {
+								break;
+							}else {
+								System.out.println("!!!!!Invalid Number!!!!! ----- Re enter the correct code ");
+								continue;
+							}
+							
+						}
+						
+						if(roomType == 1) {
+							
+							roomPrice = stdRoomPrice;
+							
+						}else if(roomType == 2){
+							
+							roomPrice = deluxeRoomPrice;
+							
+						}else if(roomType == 3) {
+							
+							roomPrice = luxuryRoomType;
+						}
+						
+						//Input the Number of rooms need
+						
+						System.out.print("Enter the number of rooms you need : ");
+						numberOfRooms = sobj.nextInt();	
+						System.out.println();
+						
+						
+						
+						//How many days you stay
+						System.out.print("Enter the number of days you stay : ");
+						numberOfDays = sobj.nextInt();
+						System.out.println();
+						
+						
+						HotelBillInfo bill = new HotelBillInfo(customerName,phoneNumber,hotelName,roomType,numberOfRooms,numberOfDays,roomPrice);
+						list.add(bill);
+						System.out.println("Do you need to reserve more Rooms :    1. Yes    2. No");
+						System.out.print("Choose your option (Enter the related number) :");
+						int isNeed = sobj.nextInt();
+						System.out.println();
+						
+						if(isNeed == 1) {
+							continue;
+							
+						}else{
+							break;
+							
+						}
+						
+					}while(true);
+					
+				HotelProfile hotelDetail = new HotelProfile(hotelName,hotelAddress,hotelTelephone);
+				
+				hCService.generateReport(list,cusObj,hotelDetail);
+				System.out.println();
+				System.out.println();
+				System.out.println("If you need to do a another booking: 1. Yes    2. No");
+				System.out.print("Choose your option (Enter the related number) :");
+				int isBooking = sobj.nextInt();
+				
+				if(isBooking == 1) {
+					continue;
+					
+				}else {
+					System.out.println("-----------------Room Booking Service is Closed---------------");
+					System.out.println("Thank you fro join with Us");
+					break;
+				}
+				
+				
+			}else if(isContinue == 2){
+				
+				System.out.println("-----------------Room Booking Service is Closed---------------");
+				System.out.println("Thank you fro join with Us");
+				break;
+				
+			}	
+			
+		
+		}
+		
+	}
+
+	public void stop(BundleContext context) throws Exception {
+		System.out.println("Consumer Stopped!!!!!!!!!");
+		context.ungetService(reference);
+	}
+
+}
