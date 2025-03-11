@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Travel_Package_Producer
+Bundle-SymbolicName: Travel_Package_Producer
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: travel_package_producer.ServiceActivator
+Bundle-RequiredExecutionEnvironment: JavaSE-20
+Automatic-Module-Name: Travel.Package.Producer
+Import-Package: loyaltyprogramproducer, org.osgi.framework;version="1.3.0"
+Bundle-ActivationPolicy: lazy
+Export-Package: travel_package_producer

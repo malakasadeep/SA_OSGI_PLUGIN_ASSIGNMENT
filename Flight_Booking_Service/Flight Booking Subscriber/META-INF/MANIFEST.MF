@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: FlightBookingsubscriber
+Bundle-SymbolicName: Flight_Booking_Subscriber
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: flightbookingsubscriber.flightsubscriberActivator
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Import-Package: com.mtit.service,
+ loyaltyprogramproducer,
+ org.osgi.framework;version="1.3.0"
+Export-Package: flightbookingsubscriber
+
+
+

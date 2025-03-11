@@ -13,6 +13,10 @@
     <setAttribute key="deselected_workspace_bundles">
         <setEntry value="Hotel_Booking_Consumer"/>
         <setEntry value="Hotel_Booking_Producer"/>
+        <setEntry value="Transportation_Service_Consumer"/>
+        <setEntry value="Transportation_Service_Producer"/>
+        <setEntry value="Travel_Package_Consumer"/>
+        <setEntry value="Travel_Package_Producer"/>
     </setAttribute>
     <booleanAttribute key="includeOptional" value="true"/>
     <booleanAttribute key="org.eclipse.debug.core.ATTR_FORCE_SYSTEM_CONSOLE_ENCODING" value="false"/>
@@ -33,9 +37,9 @@
         <setEntry value="org.eclipse.osgi.compatibility.state"/>
     </setAttribute>
     <setAttribute key="selected_workspace_bundles">
+        <setEntry value="Flight_Booking_Produser"/>
+        <setEntry value="Flight_Booking_Subscriber"/>
         <setEntry value="LoyaltyProgramProducer"/>
-        <setEntry value="Transportation_Service_Consumer"/>
-        <setEntry value="Transportation_Service_Producer"/>
     </setAttribute>
     <booleanAttribute key="show_selected_only" value="true"/>
     <booleanAttribute key="tracing" value="false"/>

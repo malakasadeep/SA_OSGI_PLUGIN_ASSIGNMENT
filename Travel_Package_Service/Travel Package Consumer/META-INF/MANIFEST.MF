@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Travel_Package_Consumer
+Bundle-SymbolicName: Travel_Package_Consumer
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: travel_package_consumer.ServiceActivator
+Bundle-RequiredExecutionEnvironment: JavaSE-20
+Automatic-Module-Name: Travel.Package.Consumer
+Import-Package: org.osgi.framework;version="1.3.0",
+ travel_package_producer
+Bundle-ActivationPolicy: lazy
